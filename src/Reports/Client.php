@@ -1,8 +1,8 @@
 <?php
-
 namespace SellerWorks\Amazon\Reports;
 
 use SellerWorks\Amazon\Common\AbstractClient;
+use SellerWorks\Amazon\Common\Country;
 use SellerWorks\Amazon\Credentials\CredentialsInterface;
 
 /**
@@ -10,17 +10,14 @@ use SellerWorks\Amazon\Credentials\CredentialsInterface;
  *
  * The Reports API section of the Amazon Marketplace Web Service (Amazon MWS) API lets you request various reports that
  * help you manage your Sell on Amazon business. Report types are specified using the ReportTypes enumeration.
- *
- * @method  RequestReport                Creates a report request and submits the request to Amazon MWS.
- * @method  GetServiceStatus             Returns the operational status of the Orders API section.
  */
 class Client extends AbstractClient implements ReportsInterface
 {
+
     /**
      * Import the Fulfillment Inbound Shipment API plumbing methods.
      *
-     * @method  RequestReport                Creates a report request and submits the request to Amazon MWS.
-     *
+     * @method  self::RequestReport                Creates a report request and submits the request to Amazon MWS.
      * @method  RequestReportAsync
      */
     use ReportsTrait;
@@ -34,10 +31,9 @@ class Client extends AbstractClient implements ReportsInterface
     /**
      * {@inheritDoc}
      */
-    public function __construct(CredentialsInterface $credentials)
+    public function __construct(CredentialsInterface $credentials, $country = Country::US)
     {
         parent::__construct($credentials);
-
         $this->serializer = new Serializer\Serializer;
     }
 }

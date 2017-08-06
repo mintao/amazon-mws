@@ -8,6 +8,7 @@ namespace SellerWorks\Amazon;
  */
 final class Events
 {
+
     const REQUEST   = 'sellerworks.amazon.request';
     const RESPONSE  = 'sellerworks.amazon.response';
     const EXCEPTION = 'sellerworks.amazon.exception';
